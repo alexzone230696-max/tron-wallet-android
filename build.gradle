@@ -4,12 +4,11 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven { url "https://maven.google.com" }
-        maven { url 'https://jitpack.io' }
-        jcenter() // ⚠️ Добавляем для старых зависимостей
+        maven { url 'https://jitpack.io' }  // Для github-библиотек
+        jcenter() // Для старых библиотек
     }
     dependencies {
-        // ✅ Плагины совместимы с Java 11 и Gradle 7.5
+        // Android Gradle Plugin совместим с Gradle 7.5 и Java 11
         classpath 'com.android.tools.build:gradle:7.4.2'
         classpath "com.google.protobuf:protobuf-gradle-plugin:0.9.4"
         classpath 'com.google.gms:google-services:4.4.2'
@@ -20,9 +19,8 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url "https://maven.google.com" }
-        maven { url 'https://jitpack.io' }
-        jcenter() // ⚠️ добавляем сюда тоже
+        maven { url 'https://jitpack.io' } 
+        jcenter() // Старые библиотеки
     }
 
     gradle.projectsEvaluated {
