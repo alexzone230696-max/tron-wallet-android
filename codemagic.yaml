@@ -4,12 +4,18 @@ workflows:
     max_build_duration: 60
     environment:
       vars:
-        JAVA_HOME: /usr/lib/jvm/java-11-openjdk
+        # ✅ Правильный путь для macOS (Codemagic runner)
+        JAVA_HOME: /Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home
+      android:
+        # ✅ Укажем нужную версию SDK, если требуется
+        image: macos-latest
     scripts:
       # Сделать gradlew исполняемым
       - name: Make gradlew executable
         script: |
           chmod +x ./gradlew
+          echo "JAVA_HOME = $JAVA_HOME"
+          java -version
 
       # Получить зависимости и собрать проект
       - name: Get dependencies and build
