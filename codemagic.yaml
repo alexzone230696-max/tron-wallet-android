@@ -2,13 +2,12 @@ workflows:
   android-debug:
     name: Build Android Debug APK
     max_build_duration: 60
+    instance_type: mac_mini_m2  # ✅ Укажем macOS окружение
     environment:
       vars:
         # ✅ Правильный путь для macOS (Codemagic runner)
         JAVA_HOME: /Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home
-      android:
-        # ✅ Укажем нужную версию SDK, если требуется
-        image: macos-latest
+      xcode: 16.4  # ✅ Так указывают версию Xcode/macOS окружения
     scripts:
       # Сделать gradlew исполняемым
       - name: Make gradlew executable
