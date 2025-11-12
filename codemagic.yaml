@@ -4,8 +4,11 @@ workflows:
     max_build_duration: 60
     environment:
       vars:
-        FLUTTER_VERSION: stable
+        JAVA_HOME: /usr/lib/jvm/java-11-openjdk
     scripts:
+      - name: Make gradlew executable
+        script: |
+          chmod +x ./gradlew
       - name: Get dependencies
         script: |
           ./gradlew clean
