@@ -4,15 +4,14 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        maven { url "https://maven.google.com" }
+        maven { url 'https://jitpack.io' }
+        jcenter() // ⚠️ Добавляем для старых зависимостей
     }
     dependencies {
-        // ✅ Обновлён Android Gradle Plugin (совместим с Gradle 8.7)
+        // ✅ Плагины совместимы с Java 11 и Gradle 7.5
         classpath 'com.android.tools.build:gradle:7.4.2'
-
-        // ✅ Обновлён protobuf плагин
         classpath "com.google.protobuf:protobuf-gradle-plugin:0.9.4"
-
-        // ✅ Обновлён Google Services плагин
         classpath 'com.google.gms:google-services:4.4.2'
     }
 }
@@ -21,8 +20,11 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url "https://maven.google.com" }
         maven { url 'https://jitpack.io' }
+        jcenter() // ⚠️ добавляем сюда тоже
     }
+
     gradle.projectsEvaluated {
         tasks.withType(JavaCompile).configureEach {
             options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
